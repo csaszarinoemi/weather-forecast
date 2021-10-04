@@ -2,17 +2,19 @@ import React, {useState, useCallback} from 'react';
 import axios from 'axios';
 import { MapComponent } from './MapComponent';
 
+
 const App = () => {
   const [dataApi, setDataApi] = useState({ isLoadingApi: false, errorApi: false, data: {} })
 
   const fetchData = useCallback(async (coord) => {
-    setDataApi({ ...dataApi, isLoadingApi: true })
+    setDataApi({ isLoadingApi: true, errorApi: false, data: {} })
     try {
       const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.lng}&units=metric&appid=094080442761c029747e0c8ec0ed88e6`)
-      setDataApi({ ...dataApi, isLoadingApi: false, errorApi: false, data })
-      console.log(data)
+      console.log('nyers:', data);
+      if (data !== {}) setDataApi({isLoadingApi: false, errorApi: false, data })
+      console.log('state:', dataApi)
     } catch (error) {
-      setDataApi({ ...dataApi, isLoadingApi: false, errorApi: error?.message })
+      setDataApi({isLoadingApi: false, errorApi: error?.message })
     }
   }, [dataApi])
 
@@ -24,15 +26,16 @@ const App = () => {
     <>
       <MapComponent 
         onClickMap={handleOnClickMap}
+        weather={dataApi.data}
       />
      <div>
       <h2>Weather and location data</h2>
-      {dataApi.errorApi && <div><span>⚠ {dataApi.errorApi} ⚠</span></div>}
+      {dataApi.errorApi && <div><span>{dataApi.errorApi}</span></div>}
       <div>
         <div>
           {
             dataApi.isLoadingApi
-              ? <span>Cargando...</span>
+              ? <span>Loading...</span>
               : (
                 <span>
                   <span>{dataApi.data?.name}</span>
