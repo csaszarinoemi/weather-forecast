@@ -39,13 +39,36 @@ const App = () => {
               `,
           }));
         }
+      })
+      .catch((error) => {
+        // Error
+        if (error.response) {
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
       });
       axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${coord.latlng.lat}&lon=${coord.latlng.lng}&units=metric&lang=hu&exclude=current,hourly,minutely,alerts&appid=72bedafb2eceb4ad3ca35583a7635495`)
       .then((response) => {
         console.log('weather:', response.data.daily);
         setPropForecast(response.data.daily);
+      })
+      .catch((error) => {
+        // Error
+        if (error.response) {
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log('Error', error.message);
+        }
+        console.log(error.config);
       });
-      
   }
 
   return (
