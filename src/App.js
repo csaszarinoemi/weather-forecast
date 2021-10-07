@@ -28,7 +28,13 @@ const App = () => {
             html: `
               <div class="icon">
                 <img src="http://openweathermap.org/img/w/${response.data.weather[0].icon}.png">
-                ${response.data.name}, ${response.data.weather[0].description}, ${response.data.main.temp}&#8451;,
+                <div class="text">
+                  <div class="temp">${Math.round(response.data.main.temp)}&#8451;</div>
+                    <div class="city_desc">
+                      <div class="city">${response.data.name}</div>
+                      <div class="desc">${response.data.weather[0].description}</div>
+                    </div>
+                </div>
               </div>
               `,
           }));

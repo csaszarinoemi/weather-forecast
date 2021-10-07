@@ -2,7 +2,7 @@ import React from 'react'
 import { Map, Marker, TileLayer } from 'react-leaflet'
 import "./MapComponent.css";
 
-export const MapComponent = ({ positionDefault = [47.497913, 19.040236], onClickMap, propWeather, propPosition }) => {
+export const MapComponent = ({ positionDefault = [46.95676543238678, 19.00797843933106], onClickMap, propWeather, propPosition }) => {
   return (
     <Map center={positionDefault} zoom={7} style={{ height: '800px', width: '100%' }} onClick={onClickMap} propPosition={{}} propWeather={{}}
     >
