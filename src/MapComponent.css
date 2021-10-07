@@ -1,15 +1,14 @@
 .icon {
-  transform: translate(0%, -100%, 0) !important;
   position: relative;
-  background: #d4d0d0;
-  color: #5e5656;
+  background: #9e9b9b;
+  color: #1f1d1d;
   font-family: Arial;
   font-size: 20px;
   line-height: 120px;
   text-align: center;
   width: 250px;
   height: 120px;
-  border-radius: 10px;
+  border-radius: 0px 10px 10px 10px;
   padding: 0px;
 }
 .icon:after {
@@ -19,11 +18,11 @@
   width: 0;
   z-index: 1;
   border-style: solid;
-  border-color: #d4d0d0 transparent;
-  border-width: 20px 20px 0;
-  bottom: -20px;
-  left: 29%;
-  margin-left: -20px;
+  border-width: 6px 0 0 20px;
+  border-color: transparent transparent transparent #9e9b9b;
+  top: -6px;
+  left: 4%;
+  margin-left: -10px;
 }
 
 .icon img {
@@ -63,3 +62,4 @@
   font-weight: bold;
   line-height: 1.5rem;
 }
+
